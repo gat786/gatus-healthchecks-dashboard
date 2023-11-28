@@ -15,7 +15,7 @@ config:
         - "[RESPONSE_TIME] < 300"
     
     - name: Internal WhereamI through Gateway
-      url: 10.142.0.9
+      url: "http://10.142.0.9"
       headers:
         host: whereami.example.com
       interval: 30s
