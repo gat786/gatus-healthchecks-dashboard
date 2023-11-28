@@ -1,0 +1,15 @@
+kind: HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1beta1
+metadata:
+  name: healthchecks-internal-route
+  namespace: {{ .Release.Namespace }}
+spec:
+  parentRefs:
+  - kind: Gateway
+    name: internal-healthcheck-gateway
+  hostnames:
+  - "healthchecks.example.com"
+  rules:
+  - backendRefs:
+    - name: foo
+      port: 8080

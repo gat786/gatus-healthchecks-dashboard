@@ -1,0 +1,22 @@
+apiVersion: v2
+appVersion: v5.5.1
+dependencies:
+- name: common
+  repository: https://minicloudlabs.github.io/helm-charts
+  version: 0.x.x
+description: Automated service health dashboard
+home: https://minicloudlabs.github.io/helm-charts
+icon: https://raw.githubusercontent.com/TwiN/gatus/a1c8422c2ff2b9d0a6f184c99e4dc728d3f2cd75/web/static/logo-192x192.png
+keywords:
+- gatus
+- healthcheck
+- uptime
+- monitoring
+maintainers:
+- name: avakarev
+name: gatus
+sources:
+- https://github.com/minicloudlabs/helm-charts/tree/main/charts/gatus
+- https://github.com/TwiN/gatus
+type: application
+version: 3.4.0

@@ -1,0 +1,40 @@
+config:
+  endpoints:
+    - name: Frontier                 # Name of your endpoint, can be anything
+      url: "https://frontier.dev.brevanhoward.digital"
+      interval: 30s                  # Duration to wait between every status check (default: 60s)
+      conditions:
+        - "[STATUS] == 200"         # Status must be 200
+        - "[RESPONSE_TIME] < 300"   # Response time must be under 300ms
+    
+    - name: Internal WhereamI service
+      url: "http://foo.default.svc.cluster.local:8080"
+      interval: 30s
+      conditions:
+        - "[STATUS] == 200"
+        - "[RESPONSE_TIME] < 300"
+    
+    - name: Internal WhereamI through Gateway
+      url: 10.142.0.9
+      headers:
+        host: whereami.example.com
+      interval: 30s
+      conditions:
+        - "[STATUS] == 200"
+        - "[RESPONSE_TIME] < 300"
+
+service:
+  labels:
+    app: gatus
+  annotations:
+    cloud.google.com/backend-config: '{"default": "gatus-backend-config"}'
+
+ingress:
+  enabled: true
+  name: gatus-ingress
+  annotations:
+    kubernetes.io/ingress.class: gce
+  labels:
+    app: gatus
+  hosts:
+    - 'gatus.gats.dev'
