@@ -17,7 +17,7 @@ config:
     - name: Internal WhereamI through Gateway
       url: "http://10.142.0.9"
       headers:
-        host: whereami.example.com
+        Host: whereami.example.com
       interval: 30s
       conditions:
         - "[STATUS] == 200"
