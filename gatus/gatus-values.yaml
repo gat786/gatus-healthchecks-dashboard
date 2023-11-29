@@ -1,3 +1,6 @@
+alerts:
+  slack:
+    webhook-url: "https://hooks.slack.com/services/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"
 config:
   endpoints:
     - name: Frontier                 # Name of your endpoint, can be anything
@@ -6,6 +9,16 @@ config:
       conditions:
         - "[STATUS] == 200"         # Status must be 200
         - "[RESPONSE_TIME] < 300"   # Response time must be under 300ms
+      
+      alerts:
+        - type: slack
+          description: "Healthchecks failed 3 times in a row"
+          send-on-resolved: true
+        - type: slack
+          failure-threshold: 5
+          description: "Healthchecks failed 5 times in a row"
+          send-on-resolved: true
+        
     
     - name: Internal WhereamI service
       url: "http://foo.default.svc.cluster.local:8080"
