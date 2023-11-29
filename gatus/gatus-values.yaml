@@ -1,6 +1,12 @@
 alerting:
   slack:
     webhook-url: "https://hooks.slack.com/services/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"
+    default-alert:
+      description: "health check failed"
+      send-on-resolved: true
+      failure-threshold: 5
+      success-threshold: 5
+
 config:
   endpoints:
     - name: Frontier                 # Name of your endpoint, can be anything
