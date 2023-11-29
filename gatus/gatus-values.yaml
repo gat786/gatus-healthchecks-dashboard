@@ -1,4 +1,4 @@
-alerts:
+alerting:
   slack:
     webhook-url: "https://hooks.slack.com/services/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"
 config:
