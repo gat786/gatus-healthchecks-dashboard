@@ -7,6 +7,7 @@ config:
         send-on-resolved: true
         failure-threshold: 5
         success-threshold: 5
+        
   endpoints:
     - name: Frontier                 # Name of your endpoint, can be anything
       url: "https://frontier.dev.brevanhoward.digital"
@@ -59,6 +60,8 @@ ingress:
   name: gatus-ingress
   annotations:
     kubernetes.io/ingress.class: gce
+    networking.gke.io/managed-certificates: managed-cert-gatus
+    kubernetes.io/ingress.global-static-ip-name: gatus-external-ip
   labels:
     app: gatus
   hosts:
